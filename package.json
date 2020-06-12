@@ -1,0 +1,35 @@
+{
+  "name": "create-nwb-app",
+  "description": "Create a next-with-batteries app",
+  "version": "0.0.1",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc",
+    "run": "node ./build/index.js",
+    "lint": "eslint src && tsc --noEmit",
+    "lint:fix": "eslint src --fix"
+  },
+  "bin": {
+    "create-nwb-app": "./index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Chevron-9/create-nwb-app-node.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Chevron-9/create-nwb-app-node/issues"
+  },
+  "devDependencies": {
+    "@types/cross-spawn": "^6.0.2",
+    "eslint": "^7.2.0",
+    "eslint-config-galex": "^0.4.0",
+    "prettier": "^2.0.5",
+    "typescript": "^3.9.5"
+  },
+  "dependencies": {
+    "@types/node": "^14.0.12",
+    "commander": "^5.1.0",
+    "cross-spawn": "^7.0.3",
+    "promisify-child-process": "^4.1.1"
+  }
+}
