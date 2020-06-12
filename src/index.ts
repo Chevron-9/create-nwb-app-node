@@ -5,7 +5,7 @@ import { resolve } from 'path';
 import { exit } from 'process';
 
 import { options, defaultTemplate, description, name, version } from './common';
-import { tryGitInit, install, copyEnv, tryGitCommit, clone } from './postclone';
+import { tryGitInit, install, copyEnv, tryGitCommit, clone } from './utils';
 
 const program = new Command(name).version(version).description(description);
 
