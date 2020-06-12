@@ -4,7 +4,14 @@ import { existsSync, rmdirSync } from 'fs';
 import { resolve } from 'path';
 import { exit } from 'process';
 
-import { options, defaultTemplate, description, name, version } from './common';
+import {
+  options,
+  defaultTemplate,
+  description,
+  name,
+  version,
+  makeUrl,
+} from './common';
 import { tryGitInit, install, copyEnv, tryGitCommit, clone } from './utils';
 
 const program = new Command(name).version(version).description(description);
@@ -19,8 +26,6 @@ const template = program.template || defaultTemplate;
 const projectName =
   program.template || `next-with-batteries-${defaultTemplate}`;
 
-const url = `https://github.com/Chevron-9/nwb-template-${template}.git`;
-
 if (existsSync(projectName)) {
   // eslint-disable-next-line no-console
   console.error(
@@ -34,6 +39,7 @@ Please rename or remove it before trying again.`
 }
 
 const workingDirectory = resolve(process.cwd(), projectName);
+const url = makeUrl(template);
 
 try {
   clone(url, projectName);
@@ -48,7 +54,7 @@ try {
   }
 } catch (error) {
   // rollback
-  rmdirSync(name, { recursive: true });
+  rmdirSync(projectName, { recursive: true });
 
   // eslint-disable-next-line no-console
   console.warn(`An error occured during project initialization.

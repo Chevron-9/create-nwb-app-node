@@ -21,3 +21,6 @@ export const options: Option[] = [
 export const command = 'init';
 
 export const defaultTemplate = 'auth-i18n';
+
+export const makeUrl = (template: string) =>
+  `https://github.com/Chevron-9/nwb-template-${template}.git`;
