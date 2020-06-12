@@ -43,8 +43,6 @@ try {
   copyEnv(workingDirectory);
   install(workingDirectory, program.useNpm);
 
-  console.log({ gitInitialized });
-
   if (gitInitialized) {
     tryGitCommit(workingDirectory);
   }
