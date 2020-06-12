@@ -2,14 +2,14 @@ import { sync } from 'cross-spawn';
 import { rmdirSync, copyFileSync, unlinkSync } from 'fs';
 import { resolve } from 'path';
 
-export function clone(url: string, name: string) {
+export const clone = (url: string, name: string) => {
   // eslint-disable-next-line no-console
   console.log(`Cloning repository ${url}...`);
 
   sync('git', ['clone', url, name], { stdio: 'ignore' });
 }
 
-export function tryGitInit(path: string) {
+export const tryGitInit = (path: string)=> {
   try {
     // eslint-disable-next-line no-console
     console.log('\nSetting up new repository...');
@@ -27,7 +27,7 @@ export function tryGitInit(path: string) {
   }
 }
 
-export function tryGitCommit(path: string) {
+export const tryGitCommit = (path: string) => {
   try {
     sync('git', ['add', '-A'], { cwd: path, stdio: 'ignore' });
     sync(
@@ -53,7 +53,7 @@ export function tryGitCommit(path: string) {
   }
 }
 
-export function install(path: string, useNpm: boolean = false) {
+export const install = (path: string, useNpm: boolean = false) => {
   // eslint-disable-next-line no-console
   console.log('\nInstalling dependencies...');
 
@@ -79,7 +79,7 @@ export function install(path: string, useNpm: boolean = false) {
   console.log('Finished installing dependencies!');
 }
 
-export function copyEnv(path: string) {
+export const copyEnv = (path: string) => {
   // eslint-disable-next-line no-console
   console.log('Moving .env file...');
   copyFileSync(resolve(path, '.env.example'), resolve(path, '.env'));
